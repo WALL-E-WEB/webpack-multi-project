@@ -13,8 +13,11 @@
 </template>
 
 <script>
+import {fn2} from "../../libs/index.js"
 export default {
-
+    created(){
+        fn2()
+    }
 }
 </script>
 

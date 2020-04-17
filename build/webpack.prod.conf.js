@@ -6,8 +6,9 @@ const baseconfig = require("./webpack.base.conf");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
+
 module.exports = merge(baseconfig, {
-	mode: "production",
+	mode: 'production',
 	output: {
 		filename: "static/js/[name].bundle.js",
 		path: path.resolve(__dirname, "../dist", `./${process.env.FILE_NAME}`),
