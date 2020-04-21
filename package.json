@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env FILE_NAME=app1 webpack-dev-server --config build/webpack.dev.conf.js",
+    "dev": "cross-env FILE_NAME=app1 webpack-dev-server --env.FILE=APP --env.NODE_ENV=developmet --config build/webpack.dev.conf.js",
     "build": "cross-env FILE_NAME=app1 webpack --config build/webpack.base.conf.js",
     "build:prod": "cross-env FILE_NAME=app1 webpack --env.NODE_ENV=production --config build/webpack.prod.conf.js",
     "build:base": "cross-env FILE_NAME=app1 webpack --env.NODE_ENV=production --config build/webpack.base.conf.js"

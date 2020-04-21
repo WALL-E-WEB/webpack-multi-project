@@ -4,15 +4,19 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (env) => {
-	console.log(env)
+	console.log(env);
+	console.log(process.env.FILE_NAME);
 	return {
 		entry: `./src/apply/${process.env.FILE_NAME}/main.js`,
 		output: {
+			filename:
+				env.NODE_ENV == "production"
+					? "static/js/[name].bundle.js"
+					: "[name].js",
 			path: path.resolve(__dirname, "../dist", `./${process.env.FILE_NAME}`),
-			filename: "[name].js",
 			publicPath: env.NODE_ENV == "production" ? "./" : "/",
 		},
 		module: {
@@ -69,7 +73,7 @@ module.exports = (env) => {
 			],
 		},
 		plugins: [
-			new CleanWebpackPlugin(),
+			env.NODE_ENV == "production" ? new CleanWebpackPlugin() : "",
 			new VueLoaderPlugin(),
 			new webpack.DefinePlugin({
 				// "process.env": ENV,
@@ -83,10 +87,10 @@ module.exports = (env) => {
 					`../src/apply/${process.env.FILE_NAME}/${process.env.FILE_NAME}.html`
 				),
 			}),
-			new MiniCssExtractPlugin({
+			env.NODE_ENV == "production" ? new MiniCssExtractPlugin({
 				filename: "static/css/[name].[hash].css",
-				chunkFilename:"[id].css",
-			})
+				chunkFilename: "[id].css",
+			}):'',
 		],
 	};
 };

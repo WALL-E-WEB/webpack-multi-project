@@ -7,16 +7,23 @@
       <div>dddd</div>
       <div>dddd</div>
       <div>dddd</div>
-      <div>dddd</div>
-      <div class="box">bbb</div>
+      <div class="box" @click="btn">bbb</div>
   </div>
 </template>
 
 <script>
-import {fn2} from "../../libs/index.js"
+import fn2 from "../../libs/index.js"
 export default {
     created(){
-        fn2()
+        console.log(process.env.FILE_NAME)
+        console.log(process.env.NODE_ENV)
+        console.log(process.env.FILE)
+    },
+    methods:{
+        btn(){
+            console.log('btnbtn')
+            fn2()
+        }
     }
 }
 </script>
