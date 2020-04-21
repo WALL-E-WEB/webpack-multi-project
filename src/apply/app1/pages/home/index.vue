@@ -1,5 +1,8 @@
 <template>
-  <div>INDEX</div>
+  <div>
+
+      HOME
+  </div>
 </template>
 
 <script>

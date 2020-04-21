@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env FILE_NAME=app1 webpack-dev-server --env.FILE=APP --env.NODE_ENV=developmet --config build/webpack.dev.conf.js",
+    "dev": "cross-env FILE_NAME=app1 webpack-dev-server --env.NODE_ENV=development --config build/webpack.dev.conf.js",
     "build": "cross-env FILE_NAME=app1 webpack --config build/webpack.base.conf.js",
     "build:prod": "cross-env FILE_NAME=app1 webpack --env.NODE_ENV=production --config build/webpack.prod.conf.js",
     "build:base": "cross-env FILE_NAME=app1 webpack --env.NODE_ENV=production --config build/webpack.base.conf.js"
@@ -37,6 +37,9 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "vue": "^2.6.11"
+    "axios": "^0.19.2",
+    "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
+    "vue-router": "^3.1.6"
   }
 }

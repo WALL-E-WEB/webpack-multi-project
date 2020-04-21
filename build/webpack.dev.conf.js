@@ -4,7 +4,7 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (env) => {
-    console.log(env)
+	console.log(env);
 	return {
 		mode: "development",
 		//是否显示源码
@@ -21,7 +21,7 @@ module.exports = (env) => {
 			port: 81,
 			proxy: {
 				"/api": {
-					target: "http://localhost:3000",
+					target: "http://baidu.com:3000",
 					pathRewrite: { "^/api": "" },
 				},
 			},
@@ -107,5 +107,14 @@ module.exports = (env) => {
 				),
 			}),
 		],
+		resolve: {
+			alias: {
+                //配置别名
+				"@": path.resolve(__dirname, "../src"),
+            },
+            //配置拓展文件 /src/router  === /src/router/index.js
+            extensions:['.js','.vue','.json']
+            
+		},
 	};
 };

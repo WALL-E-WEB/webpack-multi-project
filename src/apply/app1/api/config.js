@@ -1,9 +1,8 @@
-const  TESTURL = "198.0.0.1:80" //测试地址
+const TESTURL = "http://192.168.0.112:9037"; //测试地址
+// const TESTURL = "https://wxapi.bdxhtx.com"; //测试地址
 
-const  PRODURL = "http://www.baidu.com" //正式地址
+const PRODURL = "http://www.baidu.com"; //正式地址
 
-if(process.env.NODE_ENV === 'production'){
-    //axios.baseurl = PRODURL
-}else{
-    //axios.baseurl = TESTURL
-}
+
+
+module.exports = process.env.NODE_ENV == "production" ? PRODURL : TESTURL;
