@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="home">
 
-      HOME
+      HOME2HOME2
   </div>
 </template>
 
@@ -12,5 +12,8 @@ export default {
 </script>
 
 <style>
-
+.home{
+    /* fff */
+    background-color: rgb(190, 11, 182);
+}
 </style>

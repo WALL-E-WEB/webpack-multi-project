@@ -27,15 +27,17 @@ module.exports = (env) => {
 			},
 		},
 
-		stats: {
-			// One of the two if I remember right
-			entrypoints: false,
-			children: false,
-		},
+		// stats: {
+		// 	// One of the two if I remember right
+		// 	entrypoints: false,
+		// 	children: false,
+		// 	colors: true
+		// },
+		stats:'errors-only',
 		entry: `./src/apply/${process.env.FILE_NAME}/main.js`,
 		output: {
 			filename: "[name].js",
-			path: path.resolve(__dirname, "../dist", `./${process.env.FILE_NAME}`),
+			// path: path.resolve(__dirname, "../dist", `./${process.env.FILE_NAME}`),
 			publicPath: "/",
 		},
 		module: {
@@ -93,13 +95,10 @@ module.exports = (env) => {
 			new webpack.HotModuleReplacementPlugin(),
 			new VueLoaderPlugin(),
 			new webpack.DefinePlugin({
-				// "process.env": ENV,
 				"process.env.FILE_NAME": JSON.stringify(process.env.FILE_NAME),
-				"process.env.FILE": JSON.stringify(env.FILE),
 				"process.env.NODE_ENV": JSON.stringify(env.NODE_ENV),
 			}),
 			new HtmlWebpackPlugin({
-				title: "瓦力",
 				filename: "index.html",
 				template: path.resolve(
 					__dirname,
@@ -109,12 +108,11 @@ module.exports = (env) => {
 		],
 		resolve: {
 			alias: {
-                //配置别名
+				//配置别名
 				"@": path.resolve(__dirname, "../src"),
-            },
-            //配置拓展文件 /src/router  === /src/router/index.js
-            extensions:['.js','.vue','.json']
-            
+			},
+			//配置拓展文件 /src/router  === /src/router/index.js
+			extensions: [".js", ".vue", ".json"],
 		},
 	};
 };

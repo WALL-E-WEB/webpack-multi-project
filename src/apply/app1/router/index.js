@@ -1,8 +1,11 @@
 // import router from "../../../router";
+import Vue from 'vue'
 import router from "@/router";
 
-
+Vue.skdjf2 = 'aaa'
+console.log('Vue.skdjf2',Vue.skdjf)
 import index from "../pages/index";
+// import home from "../pages/home";
 
 const routes = [
     {
@@ -15,8 +18,11 @@ const routes = [
 	},
 	{
         path: "/home",
-        name:'home',
-        component: ()=> import('../pages/home/index.vue'),
+        name:'home2',
+        // component:home,
+        component: ()=> import(/* webpackChunkName: "home" */'../pages/home/index.vue'),
+        // component: ()=> import(/* webpackPrefetch: true */'../pages/home/index.vue'),
+        // component: ()=> import('../pages/home/index.vue'),
         meta:{
             title:'walle'
         }
