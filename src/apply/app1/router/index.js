@@ -26,7 +26,19 @@ const routes = [
         meta:{
             title:'walle'
         }
-	},
+    },
+	{
+        path: "/login",
+        name:'login',
+        // component:home,
+        component: ()=> import(/* webpackChunkName: "logini" */'../pages/login/index.vue'),
+        // component: ()=> import(/* webpackPrefetch: true */'../pages/home/index.vue'),
+        // component: ()=> import('../pages/home/index.vue'),
+        meta:{
+            title:'walle'
+        }
+    },
+    
 ];
 
 router.beforeEach((to,from,next)=>{

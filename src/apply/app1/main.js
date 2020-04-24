@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 // import {fn} from "../../libs/index.js"
 // fn()
-console.log('11')
+console.log('122')
 export const app = new Vue({
     router,
 	render: (h) => h(App),

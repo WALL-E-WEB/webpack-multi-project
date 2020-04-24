@@ -10,12 +10,13 @@ module.exports = (env) => {
 		//是否显示源码
 		devtool: "inline-source-map",
 		devServer: {
+
 			host: "0.0.0.0",
 			hot: true,
 			// compress:true,
 			//不显示页面顶部的 app ready 标栏
 			inline: true,
-			open: false,
+			open: true,
 			//编译错误时覆盖全屏 显示错误
 			overlay: true,
 			port: 81,
@@ -26,13 +27,14 @@ module.exports = (env) => {
 				},
 			},
 		},
-
+		
 		// stats: {
 		// 	// One of the two if I remember right
 		// 	entrypoints: false,
 		// 	children: false,
 		// 	colors: true
 		// },
+		//显示信息
 		stats:'errors-only',
 		entry: `./src/apply/${process.env.FILE_NAME}/main.js`,
 		output: {

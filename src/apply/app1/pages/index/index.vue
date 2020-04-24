@@ -4,12 +4,17 @@
 
 <script>
 export default {
-
-}
+  data() {
+    return {
+      content: "2"
+    };
+  }
+};
 </script>
 
 <style>
-.index{
+.index {
   width: 100%;
+  height: 100%;
 }
 </style>

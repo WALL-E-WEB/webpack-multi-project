@@ -38,6 +38,7 @@ export default {
     width: 100%;
     height: 400px;
     background-color: rgb(17, 56, 185);
-    transform: translate(20%,0);
+    /* transform: translate(20%,0); */
+    transform: translate(20%,10);
 }
 </style>

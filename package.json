@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env FILE_NAME=app1 webpack-dev-server --env.NODE_ENV=development --config build/webpack.dev.conf.js",
-    "build": "cross-env FILE_NAME=app1 webpack --config build/webpack.base.conf.js",
-    "build:base": "cross-env FILE_NAME=app1 webpack --env.NODE_ENV=production --config build/webpack.base.conf.js"
+    "dev:app1": "cross-env FILE_NAME=app1 webpack-dev-server --env.NODE_ENV=development --config build/webpack.dev.conf.js",
+    "dev:app2": "cross-env FILE_NAME=app2 webpack-dev-server --env.NODE_ENV=development --config build/webpack.dev.conf.js",
+    "build:app1": "cross-env FILE_NAME=app1 webpack --env.NODE_ENV=production --config build/webpack.prod.conf.js",
+    "build:app2": "cross-env FILE_NAME=app2 webpack --env.NODE_ENV=production --config build/webpack.prod.conf.js"
   },
   "keywords": [],
   "author": "",

@@ -1,7 +1,9 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+//---------------------vue-loader------------------------------
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+//---------------------打包分析------------------------------
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 	.BundleAnalyzerPlugin;
 
@@ -15,20 +17,20 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // --------------打包时间--------------------------------------------
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
-// --------------------
+// --------------------gzip压缩--------------------
 const CompressionPlugin = require("compression-webpack-plugin");
 
 const config = (env) => {
-	console.log(env);
-	console.log(process.env.FILE_NAME);
+	console.log(env);//{NODE_ENV: 'production'}
+	console.log(process.env.FILE_NAME);//app1
 	return {
 		entry: `./src/apply/${process.env.FILE_NAME}/main.js`,
 		output: {
 			path: path.resolve(__dirname, "../dist", `./${process.env.FILE_NAME}`),
-			filename: "static/js/[name].[chunkhash].js",
+			filename: "static/js/[name].[contenthash].js",
 			publicPath: "./",
 			//懒加载模块 或 分块模块 的 输出路径 以及命名 不写则默认filename路径 name为vendors
-			chunkFilename: "static/js/[name].[chunkhash].js",
+			chunkFilename: "static/js/[name].[contenthash].js",
 		},
 		mode: "production",
 		module: {
@@ -86,18 +88,20 @@ const config = (env) => {
 		},
 		plugins: [
 			//开启gzip压缩
-			new CompressionPlugin({
-				algorithm: "gzip",
-				test: /\.js$|\.css$/,
-			}),
+			// new CompressionPlugin({
+			// 	algorithm: "gzip",
+			// 	test: /\.js$|\.css$/,
+			// }),
 			//打包分析
 			// new BundleAnalyzerPlugin(),
 			new CleanWebpackPlugin(),
 			new VueLoaderPlugin(),
+			//设置js全局变量
 			new webpack.DefinePlugin({
-				// "process.env": ENV,
+				"process.env.NODE_ENV": env.NODE_ENV,
 				"process.env.FILE_NAME": JSON.stringify(process.env.FILE_NAME),
 			}),
+			//html文件
 			new HtmlWebpackPlugin({
 				title: "瓦力",
 				filename: "index.html",
@@ -106,14 +110,22 @@ const config = (env) => {
 					`../src/apply/${process.env.FILE_NAME}/${process.env.FILE_NAME}.html`
 				),
 			}),
+			//css分块
 			new MiniCssExtractPlugin({
 				filename: "static/css/[name].[contenthash].css",
 				chunkFilename: "static/css/[name].[contenthash].css",
 			}),
+			//以路经为id
 			new webpack.HashedModuleIdsPlugin({
 				context: __dirname,
 				hashDigestLength: 10,
 			}),
+
+			//设定chunk name
+			new webpack.NamedChunksPlugin(
+				(chunk) =>
+					chunk.name || Array.from(chunk.modulesIterable, (m) => m.id).join("_")
+			),
 		],
 		resolve: {
 			alias: {
@@ -152,12 +164,14 @@ const config = (env) => {
 				}),
 				new OptimizeCSSAssetsPlugin({}),
 			],
-			//相关引用不改变hash,保持长缓存
+			// 将包含chunks映射关系单独提出出来,避免main.js hash变动
 			runtimeChunk: {
 				name: (entrypoint) => `runtime~${entrypoint.name}`,
 			},
 		},
 	};
 };
+// module.exports = config;
 
+// 打包时间分析
 module.exports = smp.wrap(config);

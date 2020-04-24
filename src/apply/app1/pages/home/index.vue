@@ -14,6 +14,9 @@ export default {
 <style>
 .home{
     /* fff */
-    background-color: rgb(190, 11, 182);
+    background-color: rgb(216, 200, 215);
+
+    height: 100%;
+
 }
 </style>
