@@ -10,7 +10,7 @@ node v12.16.1
 
 目录:
 
-![image-20200424173054291](E:%5CWall-E%5Cmy-webpack%5Cimage-20200424173054291.png)
+![image-20200424173054291](https://github.com/WALL-E-WEB/webpack-multi-project/blob/master/image-20200424173054291.png)
 
 package.json:
 
@@ -534,7 +534,7 @@ npm i -D mini-css-extract-plugin`
 
 - 使用前后区别:
 
-  ![image-20200422150952677](E:%5CWall-E%5Cmy-webpack%5Cimage-20200422150952677.png)
+  ![image-20200422150952677](https://github.com/WALL-E-WEB/webpack-multi-project/blob/master/image-20200422150952677.png)
 
 
 
@@ -644,7 +644,7 @@ module.exports = {
 
 ```
 
-![image-20200424104539602](E:%5CWall-E%5Cmy-webpack%5Cimage-20200424104539602.png)
+![image-20200424104539602](https://github.com/WALL-E-WEB/webpack-multi-project/blob/master/image-20200424104539602.png)
 
 ------
 
@@ -663,7 +663,7 @@ module.exports = {
 当你改main.js或改base.css时:main 和 base 的hash都会改变;
 ```
 
-![image-20200424105511640](E:%5CWall-E%5Cmy-webpack%5Cimage-20200424105511640.png)
+![image-20200424105511640](https://github.com/WALL-E-WEB/webpack-multi-project/blob/master/image-20200424105511640.png)
 
 ------
 
@@ -680,11 +680,11 @@ module.exports = {
 当你改main.js时:base 的hash不会都会改变;
 ```
 
-![image-20200424110619538](E:%5CWall-E%5Cmy-webpack%5Cimage-20200424110619538.png)
+![image-20200424110619538](https://github.com/WALL-E-WEB/webpack-multi-project/blob/master/image-20200424110619538.png)
 
 **问题:**当有增加异步模块时,因chunks的Id数字自增 会导致未改变文件的hash值改变;
 
-![image-20200424114026021](E:%5CWall-E%5Cmy-webpack%5Cimage-20200424114026021.png)
+![image-20200424114026021](https://github.com/WALL-E-WEB/webpack-multi-project/blob/master/image-20200424114026021.png)
 
 需要webpack内置插件NamedChunksPlugin 和 HashedModuleIdsPlugin 解决:
 
@@ -703,7 +703,7 @@ new webpack.NamedChunksPlugin(
 }
 ```
 
-![image-20200424121335154](E:%5CWall-E%5Cmy-webpack%5Cimage-20200424121335154.png)
+![image-20200424121335154](https://github.com/WALL-E-WEB/webpack-multi-project/blob/master/image-20200424121335154.png)
 
 
 
