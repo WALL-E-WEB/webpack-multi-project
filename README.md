@@ -544,7 +544,6 @@ npm i -D mini-css-extract-plugin`
 
 - 依靠两个插件:
 
-- ![img](https://user-gold-cdn.xitu.io/2018/7/30/164e93dc299d7062?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
   ```js
   //将css压缩 并优化
