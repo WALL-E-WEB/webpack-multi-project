@@ -722,6 +722,98 @@ optimization:{
 }
 ```
 
+# 三、babel7 配置
+
+## 1. babel/preset-env
+
+- 安装:
+
+  ```js
+  npm install --save-dev @babel/preset-env
+  ```
+
+  
+
+## 2.core-js@3
+
+- 安装:
+
+  ```js
+  npm i --save core-js@3 
+  ```
+
+  
+
+## 3.babel/plugin-transform-runtime
+
+- 安装:
+
+  ```
+  npm install --save-dev @babel/plugin-transform-runtime
+  ```
+
+  
+
+## 4.@babel/runtime
+
+- 安装:https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav
+
+  ```js
+  根据corejs选项选定:
+  npm install --save @babel/runtime			// corejs: false
+  npm install --save @babel/runtime-corejs2	// corejs: 2
+  npm install --save @babel/runtime-corejs3 	// corejs: 3
+  ```
+
+  
+
+## 5.webpack配置babel
+
+```js
+// webpack.prod.conf.js
+{	.....
+	module:{
+		rules:[
+            ....
+		{
+          test: /\.js$/,
+          use: 'babel-loader',
+          exclude: /(node_modules)/
+        },
+		]
+	}
+}
+```
+
+```js
+// babel.config.js
+module.exports = function(api) {
+  api.cache(true);
+
+  const presets = [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage',
+        corejs: {
+          version: 3,
+          proposals: true
+        },
+        targets: {
+          browsers: ['> 1%', 'last 2 versions', 'not ie<= 8']
+        }
+      }
+    ]
+  ];
+  const plugins = [['@babel/plugin-transform-runtime', { corejs: 3 }]];
+  return {
+    presets,
+    plugins
+  };
+};
+
+```
+
 
 
 # 插件说明:

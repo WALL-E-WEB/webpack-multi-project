@@ -69,9 +69,9 @@ module.exports = (env) => {
 					test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
 					loader: "url-loader",
 					options: {
-						limit: 1000,
+						limit: 8 * 1024,
 						name: "static/img/[name].[hash:7].[ext]",
-						// 版本
+						// 解决版本问题
 						esModule: false,
 					},
 				},
