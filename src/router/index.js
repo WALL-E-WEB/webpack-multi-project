@@ -1,17 +1,16 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   routes: []
-})
+});
 router.beforeEach((to, from, next) => {
-  if (to.meta.title) {
-    document.title = to.meta.title
-  }
+  // 改变页码title
+  if (to.meta.title) document.title = to.meta.title;
   //1
-  next()
+  next();
   //4
-})
-export default router
+});
+export default router;

@@ -1,4 +1,4 @@
-webpack4 + vue 多应用框架
+webpack4 + vue 多应用、多页面框架
 
 ```json
 环境:
@@ -42,7 +42,8 @@ package.json:
 √ 跨域;
 √ 路径别名@;
 √ 不同环境http基地址;
-√ 多应用;
+√ 多页面应用;
+√ restful风格axios封装;
 ```
 
 
@@ -52,7 +53,8 @@ const webpack = require("webpack");
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+// 请求后端的地址
+let url = require(`../src/apply/${process.env.FILE_NAME}/api/config.js`);
 module.exports = (env) => {
 	console.log(env);
 	return {
@@ -71,8 +73,9 @@ module.exports = (env) => {
 			port: 81,
 			proxy: {
 				"/api": {
-					target: "http://baidu.com:3000",
+					target: url,
 					pathRewrite: { "^/api": "" },
+                    // axios 的 baseurl 设置为'/api'
 				},
 			},
 		},

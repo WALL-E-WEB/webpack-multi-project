@@ -53,7 +53,7 @@ const config = (env) => {
         {
           test: /\.js$/,
           // loader: "babel-loader",
-          use: 'babel-loader',
+          use: ['babel-loader'],
           exclude: /(node_modules)/
           // exclude: (file) =>
           // 	/node_modules/.test(file) && !/\.vue\.js/.test(file),
