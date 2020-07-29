@@ -43,7 +43,9 @@ package.json:
 √ 路径别名@;
 √ 不同环境http基地址;
 √ 多页面应用;
+√ 持久缓存contenthash；
 √ restful风格axios封装;
+√ babel7 配置；
 ```
 
 
